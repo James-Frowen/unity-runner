@@ -9,11 +9,12 @@ LABEL "repository"="http://github.com/MirrorNG/unity-runner"
 LABEL "homepage"="http://github.com/MirrorNG/unity-runner"
 LABEL "maintainer"="Paul Pacheco <paulpach@gmail.com>"
 
-RUN apt install -y gnupg ca-certificates && \
+RUN apt install gnupg ca-certificates && \
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
     echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list && \
     apt-get update && \
-    apt-get install -y --no-install-recommends default-jre unzip mono-devel && \
+    apt install mono-devel && \
+    apt-get install -y --no-install-recommends default-jre unzip && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* && \
     apt-get autoremove -y 
     
